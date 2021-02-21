@@ -19,6 +19,7 @@ import frc.robot.subsystem.controlpanel.commands.SpinRotations;
 import frc.robot.subsystem.controlpanel.commands.SpinnerRetract;
 import frc.robot.subsystem.controlpanel.commands.SpinnerUp;
 import frc.robot.subsystem.controlpanel.commands.Stop;
+import frc.robot.subsystem.football.FootballPlayground;
 import frc.robot.subsystem.intake.Intake;
 import frc.robot.subsystem.intake.commands.IntakeDown;
 import frc.robot.subsystem.intake.commands.IntakeSpinBack;
@@ -107,6 +108,9 @@ public class SubsystemFactory {
         allMACs.put("00:80:2F:27:04:C6", "RIO3"); //eth0
         allMACs.put("00:80:2F:17:D7:4B", "RIO2"); //eth0
         allMACs.put("00:80:2F:17:D7:4C", "RIO2"); //usb0
+        allMACs.put("00:80:2F:30:DB:F8", "COVID"); //eth0
+        allMACs.put("00:80:2F:30:DB:F9", "COVID"); //usb0
+        allMACs.put("00:80:2F:17:F8:3F", "FOOTBALL"); //usb0
     }
 
     public static SubsystemFactory getInstance() {
@@ -141,6 +145,10 @@ public class SubsystemFactory {
             case "RIO3":
                 initRIO3(portMan);
                 break;
+            case "COVID":
+                initCovid(portMan);
+            case "FOOTBALL":
+                initFootball(portMan);
             default:
                 initRIO3(portMan); // default to football if we don't know better
             }
@@ -192,6 +200,10 @@ public class SubsystemFactory {
         telemetry.init(portMan);
         displayManager.addTelemetry(telemetry);
     }
+
+    public void initCovid(PortMan portMan) {
+
+    }
     /**
      * 
      * init subsystems specific to Football
@@ -200,6 +212,9 @@ public class SubsystemFactory {
 
     private void initFootball(PortMan portMan) throws Exception {
         logger.info("Initializing Football");
+
+        FootballPlayground play = new FootballPlayground();
+        play.init(portMan);
         
     }
 
