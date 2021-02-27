@@ -70,6 +70,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    System.out.println("+++++++++++++++++++++++++++++++++++++ I Am here ++++++++++++++++++++++");
     resetTime();
     initTime = Instant.now();
 

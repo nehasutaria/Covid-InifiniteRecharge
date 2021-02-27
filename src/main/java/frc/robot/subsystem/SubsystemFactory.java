@@ -126,14 +126,14 @@ public class SubsystemFactory {
 
         logger.info("initializing");
 
-        botName = getBotName();
+       // botName = getBotName();
 
         logger.info("Running on " + botName);
 
         displayManager = dm;
         subsystemInterfaceList = new ArrayList<SBInterface>();
         pdp = new PowerDistributionPanel(1);
-        //botName = "RIO3";
+        botName = "FOOTBALL";
 
 
         try {
@@ -147,8 +147,10 @@ public class SubsystemFactory {
                 break;
             case "COVID":
                 initCovid(portMan);
+                break;
             case "FOOTBALL":
                 initFootball(portMan);
+                break;
             default:
                 initRIO3(portMan); // default to football if we don't know better
             }
@@ -213,8 +215,8 @@ public class SubsystemFactory {
     private void initFootball(PortMan portMan) throws Exception {
         logger.info("Initializing Football");
 
-        FootballPlayground play = new FootballPlayground();
-        play.init(portMan);
+       // FootballPlayground play = new FootballPlayground();
+       // play.init(portMan);
         
     }
 
